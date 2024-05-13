@@ -1,8 +1,7 @@
-package gui.controllers;
+package pa.controllers;
 
 import java.sql.SQLException;
 
-import gui.models.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -10,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import pa.models.*;
 
 public class ReadController {
 	@FXML

@@ -1,11 +1,12 @@
-package gui.models;
+package pa.models;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import pa.DB;
+
 import java.sql.Blob;
 import java.sql.Date;
-
-import gui.DB;
 
 public final class Series extends Anime {
 	public String season;

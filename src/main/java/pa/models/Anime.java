@@ -1,6 +1,4 @@
-package gui.models;
-
-import gui.DB;
+package pa.models;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import pa.DB;
+
 import java.sql.Blob;
 import java.sql.Date;
 

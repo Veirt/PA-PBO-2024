@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pa.controllers.ReadController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pa.controllers.ReadController">
    <children>
-      <VBox alignment="CENTER" prefHeight="43.0" prefWidth="600.0">
-         <children>
-            <Label text="Data Anime" />
-         </children>
-      </VBox>
-      <FlowPane fx:id="wrapper" prefHeight="365.0" prefWidth="713.0" />
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="710.0" prefWidth="929.0">
+         <content>
+            <FlowPane fx:id="wrapper" prefHeight="480.0" prefWidth="708.0" />
+         </content>
+      </ScrollPane>
    </children>
 </VBox>

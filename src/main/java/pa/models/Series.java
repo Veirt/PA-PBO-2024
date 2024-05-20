@@ -11,9 +11,9 @@ import java.sql.Date;
 public final class Series extends Anime {
 	public String season;
 
-	public Series(int id, String title, String synopsis, int episodes, String status, Date airingDate, String genres,
+	public Series(int id, String title, String synopsis, int episodes, Date airingDate, String status, String genres,
 			String studio, Blob poster, String season) {
-		super(id, title, synopsis, episodes, status, airingDate, genres, studio, poster);
+		super(id, title, synopsis, episodes, airingDate, status, genres, studio, poster);
 		this.season = season;
 	}
 

@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import pa.models.*;
 
 public class ReadController {
@@ -23,6 +24,8 @@ public class ReadController {
 			VBox animeVbox = new VBox();
 			animeVbox.setPadding(new Insets(10));
 			animeVbox.setMaxWidth(250);
+			animeVbox.setMaxHeight(350);
+			animeVbox.setSpacing(10);
 
 			// 200x300
 			// preserveRatio: true
@@ -34,6 +37,7 @@ public class ReadController {
 			Label titleLabel = new Label(anime.title);
 			// wrap biar kalo panjang, turun ke bawah
 			titleLabel.setWrapText(true);
+			titleLabel.setFont(new Font(15));
 
 			// kalau series, tampilkan seasonnya
 			// kalau movie, tampilkan tanggal rilisnya

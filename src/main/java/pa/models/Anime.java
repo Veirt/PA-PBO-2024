@@ -19,20 +19,20 @@ public abstract class Anime {
 	public String title;
 	public String synopsis;
 	public int episodes;
-	public String status;
 	public Date airingDate;
+	public String status;
 	public String genres;
 	public String studio;
 	protected Blob poster;
 
-	public Anime(int id, String title, String synopsis, int episodes, String status, Date airingDate, String genres,
+	public Anime(int id, String title, String synopsis, int episodes, Date airingDate, String status, String genres,
 			String studio, Blob poster) {
 		this.id = id;
 		this.title = title;
 		this.synopsis = synopsis;
 		this.episodes = episodes;
-		this.status = status;
 		this.airingDate = airingDate;
+		this.status = status;
 		this.genres = genres;
 		this.studio = studio;
 		this.poster = poster;
@@ -64,8 +64,8 @@ public abstract class Anime {
 				String title = resultSet.getString("title");
 				String synopsis = resultSet.getString("synopsis");
 				int episodes = resultSet.getInt("episodes");
-				String status = resultSet.getString("status");
 				Date airingDate = resultSet.getDate("airingDate");
+				String status = resultSet.getString("status");
 				String genres = resultSet.getString("genres");
 				String studio = resultSet.getString("studio");
 				Blob poster = resultSet.getBlob("poster");
@@ -73,11 +73,11 @@ public abstract class Anime {
 				String season = resultSet.getString("season");
 
 				if (type.equals("Series")) {
-					Series series = new Series(id, title, synopsis, episodes, status, airingDate, genres, studio,
+					Series series = new Series(id, title, synopsis, episodes, airingDate, status, genres, studio,
 							poster, season);
 					list.add(series);
 				} else if (type.equals("Movie")) {
-					Movie movie = new Movie(id, title, synopsis, episodes, status, airingDate, genres, studio, poster);
+					Movie movie = new Movie(id, title, synopsis, episodes, airingDate, status, genres, studio, poster);
 					list.add(movie);
 				}
 			}

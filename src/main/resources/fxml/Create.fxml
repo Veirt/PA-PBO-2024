@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pa.CraeteController">
+   <children>
+      <Label layoutX="38.0" layoutY="29.0" text="ID:" />
+      <Label layoutX="39.0" layoutY="72.0" text="Title" />
+      <Label layoutX="38.0" layoutY="123.0" text="Synopsis" />
+      <TextField fx:id="titleText" layoutX="120.0" layoutY="68.0" prefHeight="26.0" prefWidth="294.0" />
+      <TextArea fx:id="synopsisText" layoutX="120.0" layoutY="123.0" prefHeight="200.0" prefWidth="294.0" />
+      <Label layoutX="38.0" layoutY="346.0" text="Episode" />
+      <TextField fx:id="episodesText" layoutX="120.0" layoutY="342.0" prefHeight="26.0" prefWidth="94.0" />
+      <CheckBox fx:id="episodesCB" layoutX="232.0" layoutY="346.0" mnemonicParsing="false" text="Unknown" />
+      <Label layoutX="38.0" layoutY="437.0" text="Status" />
+      <ComboBox fx:id="statusCombo" layoutX="120.0" layoutY="433.0" prefHeight="26.0" prefWidth="294.0" />
+      <Label layoutX="37.0" layoutY="393.0" prefHeight="18.0" prefWidth="71.0" text="Airing Date" />
+      <DatePicker fx:id="airingDatePicker" layoutX="120.0" layoutY="389.0" prefHeight="26.0" prefWidth="294.0" />
+      <Label layoutX="38.0" layoutY="483.0" text="Studio" />
+      <TextField fx:id="studioText" layoutX="120.0" layoutY="479.0" prefHeight="26.0" prefWidth="294.0" />
+      <VBox fx:id="genreVbox" layoutX="507.0" layoutY="72.0" prefHeight="200.0" prefWidth="139.0" spacing="11.0">
+         <children>
+            <CheckBox mnemonicParsing="false" text="Action" />
+            <CheckBox mnemonicParsing="false" text="Adventure" />
+            <CheckBox mnemonicParsing="false" text="Comedy" />
+            <CheckBox mnemonicParsing="false" text="Drama" />
+            <CheckBox mnemonicParsing="false" text="Fantasy" />
+            <CheckBox mnemonicParsing="false" text="Horror" />
+            <CheckBox mnemonicParsing="false" text="Romance" />
+            <CheckBox mnemonicParsing="false" text="School" />
+            <CheckBox mnemonicParsing="false" text="Sports" />
+         </children>
+      </VBox>
+      <Label layoutX="447.0" layoutY="72.0" text="Genre" />
+      <Label layoutX="449.0" layoutY="346.0" text="Type" />
+      <ComboBox fx:id="typeCombo" layoutX="507.0" layoutY="342.0" prefHeight="26.0" prefWidth="139.0" />
+      <Label layoutX="446.0" layoutY="393.0" text="Poster" />
+      <Button layoutX="507.0" layoutY="389.0" mnemonicParsing="false" text="Browse" />
+      <ImageView fx:id="posterImage" fitHeight="150.0" fitWidth="100.0" layoutX="583.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="createButton" layoutX="384.0" layoutY="568.0" mnemonicParsing="false" text="Create" />
+      <Label fx:id="idLabel" layoutX="120.0" layoutY="29.0" text="ID" />
+   </children>
+</AnchorPane>

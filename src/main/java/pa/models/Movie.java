@@ -9,9 +9,9 @@ import java.sql.Blob;
 import java.sql.Date;
 
 public final class Movie extends Anime {
-	public Movie(int id, String title, String synopsis, int episodes, String status, Date airingDate, String genres,
+	public Movie(int id, String title, String synopsis, int episodes, Date airingDate, String status, String genres,
 			String studio, Blob poster) {
-		super(id, title, synopsis, episodes, status, airingDate, genres, studio, poster);
+		super(id, title, synopsis, episodes, airingDate, status, genres, studio, poster);
 	}
 
 	@Override

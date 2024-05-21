@@ -36,6 +36,12 @@ public class ReadController {
 			animeVbox.setMaxHeight(350);
 			animeVbox.setSpacing(10);
 
+			// animeVbox on click
+			animeVbox.setOnMouseClicked(e -> {
+				AnimeInfoController.currentAnimeId = anime.getId();
+				App.setScene("AnimeInfo");
+			});
+
 			// 200x300
 			// preserveRatio: true
 			// ambil posternya

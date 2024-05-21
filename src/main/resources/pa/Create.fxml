@@ -17,7 +17,7 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="955.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pa.controllers.CreateController">
    <children>
-      <ToolBar orientation="VERTICAL" prefHeight="40.0" prefWidth="200.0">
+      <ToolBar orientation="VERTICAL" prefHeight="40.0" prefWidth="176.0">
          <items>
             <Button fx:id="animeListButton" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setSceneToAnimeList" text="Anime List">
                <font>

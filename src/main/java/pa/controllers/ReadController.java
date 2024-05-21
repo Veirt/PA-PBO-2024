@@ -1,5 +1,6 @@
 package pa.controllers;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javafx.fxml.FXML;
@@ -10,11 +11,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import pa.App;
 import pa.models.*;
 
 public class ReadController {
 	@FXML
 	private FlowPane wrapper;
+
+	@FXML
+	private void setSceneToCreate() throws IOException {
+		App.setScene("Create");
+	}
 
 	public void initialize() throws SQLException {
 		wrapper.setPadding(new Insets(10));

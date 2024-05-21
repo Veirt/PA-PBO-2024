@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -13,7 +14,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        scene = new Scene(loadFXML("Main"));
+        scene = new Scene(loadFXML("Read"));
         primaryStage.setTitle("Anime99");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -22,7 +23,7 @@ public class App extends Application {
 
     public static void setScene(String fxml) throws IOException {
         Stage stage = (Stage) scene.getWindow();
-        scene = new Scene(loadFXML(fxml));
+        scene = new Scene(loadFXML(fxml), Color.BLACK);
         stage.setScene(scene);
     }
 

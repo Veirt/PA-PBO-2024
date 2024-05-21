@@ -19,7 +19,7 @@ public class ReadController {
 	private FlowPane wrapper;
 
 	@FXML
-	private void setSceneToCreate() throws IOException {
+	private void setSceneToCreateAnime() throws IOException {
 		App.setScene("Create");
 	}
 

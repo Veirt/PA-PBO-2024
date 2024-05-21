@@ -7,13 +7,11 @@ import pa.App;
 import pa.models.*;
 
 public class CreateController {
-
 	@FXML
 	private void setSceneToAnimeList() throws IOException {
 		App.setScene("Read");
 	}
 
 	public void initialize() {
-
 	}
 }

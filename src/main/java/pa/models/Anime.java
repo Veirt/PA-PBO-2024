@@ -124,7 +124,7 @@ public abstract class Anime {
 		}
 	}
 
-	void delete() {
+	public void delete() {
 		String query = "DELETE FROM anime WHERE id = ?";
 		try (PreparedStatement statement = DB.con.prepareStatement(query)) {
 			statement.setInt(1, id);

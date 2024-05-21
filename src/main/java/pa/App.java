@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -26,10 +25,12 @@ public class App extends Application {
     public static void setScene(String fxml) {
         try {
             Stage stage = (Stage) scene.getWindow();
-            scene = new Scene(loadFXML(fxml), Color.BLACK);
+            scene = new Scene(loadFXML(fxml));
+            scene.getStylesheets().add(App.class.getResource("application.css").toExternalForm());
             stage.setScene(scene);
         } catch (IOException e) {
             Utils.errorMessage("Failed to load the scene");
+            System.out.println(e);
         }
     }
 

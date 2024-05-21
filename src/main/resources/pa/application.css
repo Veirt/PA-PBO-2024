@@ -1,0 +1,7 @@
+.genre-chip {
+  -fx-color: #e7ebf4;
+  -fx-border-radius: 4px;
+  -fx-background-radius: 4px;
+  -fx-background-color: #059669;
+  -fx-padding: 5px;
+}

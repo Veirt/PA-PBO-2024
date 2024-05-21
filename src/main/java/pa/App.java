@@ -2,6 +2,7 @@ package pa;
 
 import java.io.IOException;
 
+import atlantafx.base.theme.CupertinoDark;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Application.setUserAgentStylesheet(new CupertinoDark().getUserAgentStylesheet());
         scene = new Scene(loadFXML("Read"));
         primaryStage.setTitle("Anime99");
         primaryStage.setScene(scene);

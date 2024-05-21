@@ -67,10 +67,10 @@
                </children>
             </VBox>
             <Label layoutX="447.0" layoutY="72.0" text="Genre" />
-            <Label layoutX="449.0" layoutY="346.0" text="Type" />
-            <ComboBox fx:id="typeCombo" layoutX="507.0" layoutY="342.0" prefHeight="26.0" prefWidth="139.0" />
-            <Label layoutX="446.0" layoutY="393.0" text="Poster" />
-            <Button layoutX="507.0" layoutY="389.0" mnemonicParsing="false" text="Browse" />
+            <Label layoutX="446.0" layoutY="393.0" text="Type" />
+            <ComboBox fx:id="typeCombo" layoutX="504.0" layoutY="389.0" prefHeight="26.0" prefWidth="139.0" />
+            <Label layoutX="443.0" layoutY="440.0" text="Poster" />
+            <Button layoutX="504.0" layoutY="436.0" mnemonicParsing="false" text="Browse" />
             <ImageView fx:id="posterImage" fitHeight="150.0" fitWidth="100.0" layoutX="583.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="createButton" layoutX="384.0" layoutY="568.0" mnemonicParsing="false" text="Create" />
             <Label fx:id="idLabel" layoutX="120.0" layoutY="29.0" text="ID" />

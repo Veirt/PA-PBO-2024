@@ -56,10 +56,10 @@ public class AnimeInfoController {
 		}
 
 		if (currentAnime == null) {
-			Utils.errorMessage("Anime tidak ditemukan.");
+			Utils.errorMessage("Anime not found.");
 		}
 
-		if (!Utils.confirmationMessage("Apakah anda yakin ingin menghapus anime ini?")) {
+		if (!Utils.confirmationMessage("Are you sure you want to delete this anime?")) {
 			return;
 		}
 

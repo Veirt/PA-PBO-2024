@@ -85,7 +85,7 @@
                </children>
             </GridPane>
             <Button fx:id="deleteButton" layoutX="796.0" layoutY="535.0" mnemonicParsing="false" onAction="#deleteAnime" text="Delete" />
-            <Button fx:id="updateButton" layoutX="710.0" layoutY="535.0" mnemonicParsing="false" text="Update" />
+            <Button fx:id="updateButton" layoutX="710.0" layoutY="535.0" mnemonicParsing="false" onAction="#setSceneToUpdate" text="Update" />
          </children>
       </AnchorPane>
    </children>

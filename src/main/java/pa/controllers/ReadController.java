@@ -1,7 +1,6 @@
 package pa.controllers;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.sql.SQLException;
 
 import javafx.fxml.FXML;
@@ -20,8 +19,9 @@ public class ReadController {
 	private FlowPane wrapper;
 
 	@FXML
-	private void setSceneToCreateAnime() throws IOException {
-		App.setScene("Create");
+	private void setSceneToCreateAnime() {
+		InputController.action = "create";
+		App.setScene("Input");
 	}
 
 	public void initialize() throws SQLException {

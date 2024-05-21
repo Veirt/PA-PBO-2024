@@ -30,7 +30,6 @@ public class App extends Application {
             stage.setScene(scene);
         } catch (IOException e) {
             Utils.errorMessage("Failed to load the scene");
-            System.out.println(e);
         }
     }
 

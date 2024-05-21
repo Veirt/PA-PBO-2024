@@ -1,6 +1,7 @@
 package pa.controllers;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.Date;
@@ -11,9 +12,11 @@ import javax.imageio.ImageIO;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -26,7 +29,11 @@ import pa.App;
 import pa.Utils;
 import pa.models.*;
 
-public class CreateController {
+public class InputController {
+	// antara 'create" atau "update"
+	public static String action;
+	public static int currentId;
+
 	@FXML
 	private TextField titleTextField;
 	@FXML
@@ -47,6 +54,12 @@ public class CreateController {
 	private ComboBox<String> typeComboBox;
 	@FXML
 	private ImageView posterImageView;
+	@FXML
+	private Button actionButton;
+	@FXML
+	private Label idLabel;
+	@FXML
+	private Label idLabelValue;
 
 	@FXML
 	private void setSceneToAnimeList() {
@@ -103,8 +116,7 @@ public class CreateController {
 		return String.join(", ", genres);
 	}
 
-	@FXML
-	private void createAnime() throws SQLException {
+	private void createAnime() {
 		String title = titleTextField.getText();
 		if (!validateAnime()) {
 			return;
@@ -144,6 +156,46 @@ public class CreateController {
 		App.setScene("Read");
 	}
 
+	private void updateAnime() {
+		String title = titleTextField.getText();
+		if (!validateAnime()) {
+			return;
+		}
+
+		String synopsis = synopsisTextArea.getText();
+		int episodes = Integer.parseInt(episodesTextField.getText());
+		String airingDate = airingDatePicker.getValue().toString();
+		String status = statusComboBox.getValue();
+		String studio = studioTextField.getText();
+		String type = typeComboBox.getValue();
+
+		String genres = getGenres();
+
+		byte[] poster = null;
+		try {
+			Image image = posterImageView.getImage();
+			BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(bufferedImage, "png", baos); // format apa aja ga ngaruh.
+			poster = baos.toByteArray();
+		} catch (IOException e) {
+			System.out.println("Error converting image to byte array: " + e.getMessage());
+		}
+
+		if (type.equals("Series")) {
+			Series series = new Series(currentId, title, synopsis, episodes, Date.valueOf(airingDate), status, genres,
+					studio, poster);
+			series.update();
+		} else {
+			Movie movie = new Movie(currentId, title, synopsis, episodes, Date.valueOf(airingDate), status, genres,
+					studio, poster);
+			movie.update();
+		}
+
+		Utils.successMessage("Successfully updated anime data");
+		App.setScene("Read");
+	}
+
 	@FXML
 	private void browsePoster() {
 		// https://github.com/Linaeus14/javaFXmaven/blob/main/src/main/java/com/pbo/controller/authController.java
@@ -172,6 +224,7 @@ public class CreateController {
 		// jika tanggal rilisnya lebih dari hari ini, maka statusnya upcoming
 		// jika tanggal rilisnya kurang dari hari ini, maka statusnya bisa airing atau
 		// finished
+		String status = statusComboBox.getValue();
 		statusComboBox.setValue(null);
 		statusComboBox.getItems().clear();
 
@@ -183,6 +236,11 @@ public class CreateController {
 			statusComboBox.setValue("Upcoming");
 		} else {
 			statusComboBox.getItems().addAll("Airing", "Finished");
+		}
+
+		// handling jika status sebelumnya masih ada di list status yang baru
+		if (statusComboBox.getItems().contains(status)) {
+			statusComboBox.setValue(status);
 		}
 
 	}
@@ -211,5 +269,56 @@ public class CreateController {
 				new TextFormatter<>(change -> change.getControlNewText().matches(regex) ? change : null));
 
 		typeComboBox.getItems().addAll("Series", "Movie");
+
+		if (action.equals("create")) {
+			actionButton.setText("Create");
+			idLabel.setVisible(false);
+			idLabelValue.setVisible(false);
+
+			actionButton.onActionProperty().set(e -> {
+				createAnime();
+			});
+		} else {
+			actionButton.setText("Update");
+			actionButton.onActionProperty().set(e -> {
+				updateAnime();
+			});
+
+			// Jika actionnya update, maka set semua field dengan data yang sudah ada
+			Anime anime = Anime.getById(currentId);
+			if (anime == null) {
+				Utils.errorMessage("Anime not found.");
+			}
+
+			idLabelValue.setText(Integer.toString(anime.getId()));
+			titleTextField.setText(anime.title);
+			synopsisTextArea.setText(anime.synopsis);
+			episodesTextField.setText(Integer.toString(anime.episodes));
+			airingDatePicker.setValue(anime.airingDate.toLocalDate());
+			this.airingDateOnChange();
+			statusComboBox.setValue(anime.status);
+
+			studioTextField.setText(anime.studio);
+
+			String[] genres = anime.genres.split(", ");
+			for (int i = 0; i < genreVbox.getChildren().size(); i++) {
+				CheckBox genreCheckBox = (CheckBox) genreVbox.getChildren().get(i);
+				for (String genre : genres) {
+					if (genreCheckBox.getText().equals(genre)) {
+						genreCheckBox.setSelected(true);
+					}
+				}
+			}
+
+			typeComboBox.setValue(anime instanceof Series ? "Series" : "Movie");
+
+			byte[] posterBytes = anime.getPoster();
+			ByteArrayInputStream posterStream = new ByteArrayInputStream(posterBytes);
+			Image poster = new Image(posterStream, 200, 300, false, true);
+			posterImageView.setImage(poster);
+
+		}
+
 	}
+
 }

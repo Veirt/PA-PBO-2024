@@ -43,7 +43,15 @@ public class AnimeInfoController {
 
 	@FXML
 	private void setSceneToCreate() {
-		App.setScene("Create");
+		InputController.action = "create";
+		App.setScene("Input");
+	}
+
+	@FXML
+	private void setSceneToUpdate() {
+		InputController.action = "update";
+		InputController.currentId = currentAnimeId;
+		App.setScene("Input");
 	}
 
 	@FXML

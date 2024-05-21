@@ -7,6 +7,7 @@ public final class Series extends Anime {
 	public Series(int id, String title, String synopsis, int episodes, Date airingDate, String status, String genres,
 			String studio, byte[] poster) {
 		super(id, title, synopsis, episodes, airingDate, status, genres, studio, poster);
+		this.type = "series";
 	}
 
 	public String getSeason() {

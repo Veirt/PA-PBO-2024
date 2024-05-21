@@ -21,6 +21,7 @@ public abstract class Anime {
 	public String status;
 	public String genres;
 	public String studio;
+	public String type;
 	protected byte[] poster;
 
 	public Anime(int id, String title, String synopsis, int episodes, Date airingDate, String status, String genres,
@@ -98,7 +99,7 @@ public abstract class Anime {
 			statement.setString(6, genres);
 			statement.setString(7, studio);
 			statement.setBytes(8, poster);
-			statement.setString(9, "movie");
+			statement.setString(9, type);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Error inserting anime: " + e.getMessage());
@@ -116,7 +117,7 @@ public abstract class Anime {
 			statement.setString(6, genres);
 			statement.setString(7, studio);
 			statement.setBytes(8, poster);
-			statement.setString(9, "movie");
+			statement.setString(9, type);
 			statement.setInt(10, id);
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -132,6 +133,17 @@ public abstract class Anime {
 		} catch (SQLException e) {
 			System.out.println("Error deleting anime: " + e.getMessage());
 		}
+	}
+
+	public static Anime getById(int id) {
+		Anime.read();
+		for (Anime anime : list) {
+			if (anime.getId() == id) {
+				return anime;
+			}
+		}
+
+		return null;
 	}
 
 }

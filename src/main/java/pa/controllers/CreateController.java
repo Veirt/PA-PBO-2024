@@ -93,14 +93,14 @@ public class CreateController {
 	}
 
 	public String getGenres() {
-		String genres = "";
+		ArrayList<String> genres = new ArrayList<>();
 		for (int i = 0; i < genreVbox.getChildren().size(); i++) {
 			CheckBox genreCheckBox = (CheckBox) genreVbox.getChildren().get(i);
 			if (genreCheckBox.isSelected()) {
-				genres += genreCheckBox.getText() + ", ";
+				genres.add(genreCheckBox.getText());
 			}
 		}
-		return genres;
+		return String.join(", ", genres);
 	}
 
 	@FXML

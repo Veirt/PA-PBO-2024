@@ -84,7 +84,7 @@
                   <Label fx:id="seasonLabel" maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <Button fx:id="deleteButton" layoutX="796.0" layoutY="535.0" mnemonicParsing="false" text="Delete" />
+            <Button fx:id="deleteButton" layoutX="796.0" layoutY="535.0" mnemonicParsing="false" onAction="#deleteAnime" text="Delete" />
             <Button fx:id="updateButton" layoutX="710.0" layoutY="535.0" mnemonicParsing="false" text="Update" />
          </children>
       </AnchorPane>

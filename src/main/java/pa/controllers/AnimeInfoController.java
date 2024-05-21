@@ -46,6 +46,28 @@ public class AnimeInfoController {
 		App.setScene("Create");
 	}
 
+	@FXML
+	private void deleteAnime() {
+		Anime currentAnime = null;
+		for (Anime anime : Anime.list) {
+			if (anime.getId() == currentAnimeId) {
+				currentAnime = anime;
+			}
+		}
+
+		if (currentAnime == null) {
+			Utils.errorMessage("Anime tidak ditemukan.");
+		}
+
+		if (!Utils.confirmationMessage("Apakah anda yakin ingin menghapus anime ini?")) {
+			return;
+		}
+
+		currentAnime.delete();
+
+		App.setScene("Read");
+	}
+
 	public void initialize() {
 		// loop over Anime.list and find currentAnimeId
 		Anime currentAnime = null;

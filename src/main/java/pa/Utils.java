@@ -19,4 +19,12 @@ public class Utils {
 		alert.setContentText(message);
 		alert.showAndWait();
 	}
+
+	public static boolean confirmationMessage(String message) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation");
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		return alert.showAndWait().get().getText().equals("OK");
+	}
 }

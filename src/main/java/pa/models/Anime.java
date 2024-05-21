@@ -1,5 +1,6 @@
 package pa.models;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,9 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import pa.DB;
-
-import java.sql.Blob;
-import java.sql.Date;
 
 public abstract class Anime {
 	public static ArrayList<Anime> list = new ArrayList<>();
@@ -23,10 +21,10 @@ public abstract class Anime {
 	public String status;
 	public String genres;
 	public String studio;
-	protected Blob poster;
+	protected byte[] poster;
 
 	public Anime(int id, String title, String synopsis, int episodes, Date airingDate, String status, String genres,
-			String studio, Blob poster) {
+			String studio, byte[] poster) {
 		this.id = id;
 		this.title = title;
 		this.synopsis = synopsis;
@@ -42,8 +40,12 @@ public abstract class Anime {
 		return id;
 	}
 
-	public Blob getPoster() {
+	public byte[] getPoster() {
 		return poster;
+	}
+
+	public void setPoster(byte[] poster) {
+		this.poster = poster;
 	}
 
 	public String getAiringDate() {
@@ -68,13 +70,12 @@ public abstract class Anime {
 				String status = resultSet.getString("status");
 				String genres = resultSet.getString("genres");
 				String studio = resultSet.getString("studio");
-				Blob poster = resultSet.getBlob("poster");
+				byte[] poster = resultSet.getBytes("poster");
 				String type = resultSet.getString("type");
-				String season = resultSet.getString("season");
 
 				if (type.equals("Series")) {
 					Series series = new Series(id, title, synopsis, episodes, airingDate, status, genres, studio,
-							poster, season);
+							poster);
 					list.add(series);
 				} else if (type.equals("Movie")) {
 					Movie movie = new Movie(id, title, synopsis, episodes, airingDate, status, genres, studio, poster);
@@ -86,9 +87,42 @@ public abstract class Anime {
 		}
 	}
 
-	abstract void insert();
+	public void insert() {
+		String query = "INSERT INTO anime (title, synopsis, episodes, status, airingDate, genres, studio, poster, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try (PreparedStatement statement = DB.con.prepareStatement(query)) {
+			statement.setString(1, title);
+			statement.setString(2, synopsis);
+			statement.setInt(3, episodes);
+			statement.setString(4, status);
+			statement.setDate(5, airingDate);
+			statement.setString(6, genres);
+			statement.setString(7, studio);
+			statement.setBytes(8, poster);
+			statement.setString(9, "movie");
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Error inserting anime: " + e.getMessage());
+		}
+	}
 
-	abstract void update();
+	public void update() {
+		String query = "UPDATE anime SET title = ?, synopsis = ?, episodes = ?, status = ?, airingDate = ?, genres = ?, studio = ?, poster = ?, type = ? WHERE id = ?";
+		try (PreparedStatement statement = DB.con.prepareStatement(query)) {
+			statement.setString(1, title);
+			statement.setString(2, synopsis);
+			statement.setInt(3, episodes);
+			statement.setString(4, status);
+			statement.setDate(5, airingDate);
+			statement.setString(6, genres);
+			statement.setString(7, studio);
+			statement.setBytes(8, poster);
+			statement.setString(9, "movie");
+			statement.setInt(10, id);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Error updating anime: " + e.getMessage());
+		}
+	}
 
 	void delete() {
 		String query = "DELETE FROM anime WHERE id = ?";

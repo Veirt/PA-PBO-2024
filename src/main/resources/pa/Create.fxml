@@ -42,18 +42,18 @@
             <Label layoutX="38.0" layoutY="29.0" text="ID:" />
             <Label layoutX="39.0" layoutY="72.0" text="Title" />
             <Label layoutX="38.0" layoutY="123.0" text="Synopsis" />
-            <TextField fx:id="titleText" layoutX="120.0" layoutY="68.0" prefHeight="26.0" prefWidth="294.0" />
-            <TextArea fx:id="synopsisText" layoutX="120.0" layoutY="123.0" prefHeight="200.0" prefWidth="294.0" />
-            <Label layoutX="38.0" layoutY="346.0" text="Episode" />
-            <TextField fx:id="episodesText" layoutX="120.0" layoutY="342.0" prefHeight="26.0" prefWidth="94.0" />
-            <CheckBox fx:id="episodesCB" layoutX="232.0" layoutY="346.0" mnemonicParsing="false" text="Unknown" />
-            <Label layoutX="38.0" layoutY="437.0" text="Status" />
-            <ComboBox fx:id="statusCombo" layoutX="120.0" layoutY="433.0" prefHeight="26.0" prefWidth="294.0" />
-            <Label layoutX="37.0" layoutY="393.0" prefHeight="18.0" prefWidth="71.0" text="Airing Date" />
-            <DatePicker fx:id="airingDatePicker" layoutX="120.0" layoutY="389.0" prefHeight="26.0" prefWidth="294.0" />
+            <TextField fx:id="titleTextField" layoutX="137.0" layoutY="68.0" prefHeight="26.0" prefWidth="294.0" />
+            <TextArea fx:id="synopsisTextArea" layoutX="137.0" layoutY="123.0" prefHeight="200.0" prefWidth="294.0" />
+            <Label layoutX="38.0" layoutY="440.0" prefHeight="18.0" prefWidth="82.0" text="Episode" />
+            <TextField fx:id="episodesTextField" layoutX="137.0" layoutY="436.0" prefHeight="26.0" prefWidth="94.0" />
+            <CheckBox fx:id="unknownCheckBox" layoutX="272.0" layoutY="440.0" mnemonicParsing="false" onAction="#setUnknownEpisode" text="Unknown" visible="false" />
+            <Label layoutX="39.0" layoutY="393.0" text="Status" />
+            <ComboBox fx:id="statusComboBox" layoutX="139.0" layoutY="389.0" onAction="#statusOnChange" prefHeight="26.0" prefWidth="294.0" />
+            <Label layoutX="39.0" layoutY="349.0" prefHeight="18.0" prefWidth="100.0" text="Airing Date" />
+            <DatePicker fx:id="airingDatePicker" layoutX="139.0" layoutY="345.0" onAction="#airingDateOnChange" prefHeight="26.0" prefWidth="294.0" />
             <Label layoutX="38.0" layoutY="483.0" text="Studio" />
-            <TextField fx:id="studioText" layoutX="120.0" layoutY="479.0" prefHeight="26.0" prefWidth="294.0" />
-            <VBox fx:id="genreVbox" layoutX="507.0" layoutY="72.0" prefHeight="200.0" prefWidth="139.0" spacing="11.0">
+            <TextField fx:id="studioTextField" layoutX="137.0" layoutY="479.0" prefHeight="26.0" prefWidth="294.0" />
+            <VBox fx:id="genreVbox" layoutX="524.0" layoutY="72.0" prefHeight="200.0" prefWidth="139.0" spacing="11.0">
                <children>
                   <CheckBox mnemonicParsing="false" text="Action" />
                   <CheckBox mnemonicParsing="false" text="Adventure" />
@@ -66,14 +66,14 @@
                   <CheckBox mnemonicParsing="false" text="Sports" />
                </children>
             </VBox>
-            <Label layoutX="447.0" layoutY="72.0" text="Genre" />
-            <Label layoutX="446.0" layoutY="393.0" text="Type" />
-            <ComboBox fx:id="typeCombo" layoutX="504.0" layoutY="389.0" prefHeight="26.0" prefWidth="139.0" />
-            <Label layoutX="443.0" layoutY="440.0" text="Poster" />
-            <Button layoutX="504.0" layoutY="436.0" mnemonicParsing="false" text="Browse" />
-            <ImageView fx:id="posterImage" fitHeight="150.0" fitWidth="100.0" layoutX="583.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="createButton" layoutX="384.0" layoutY="568.0" mnemonicParsing="false" text="Create" />
-            <Label fx:id="idLabel" layoutX="120.0" layoutY="29.0" text="ID" />
+            <Label layoutX="464.0" layoutY="72.0" text="Genre" />
+            <Label layoutX="463.0" layoutY="393.0" text="Type" />
+            <ComboBox fx:id="typeComboBox" layoutX="521.0" layoutY="389.0" prefHeight="26.0" prefWidth="139.0" />
+            <Label layoutX="460.0" layoutY="440.0" text="Poster" />
+            <Button fx:id="browseButton" layoutX="521.0" layoutY="436.0" mnemonicParsing="false" onAction="#browsePoster" text="Browse" />
+            <ImageView fx:id="posterImageView" fitHeight="150.0" fitWidth="100.0" layoutX="604.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="createButton" layoutX="377.0" layoutY="567.0" mnemonicParsing="false" onAction="#createAnime" prefHeight="26.0" prefWidth="83.0" text="Create" />
+            <Label fx:id="idLabel" layoutX="137.0" layoutY="29.0" text="ID" />
          </children>
       </AnchorPane>
    </children>

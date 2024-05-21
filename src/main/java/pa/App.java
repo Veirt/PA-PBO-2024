@@ -23,10 +23,14 @@ public class App extends Application {
 
     }
 
-    public static void setScene(String fxml) throws IOException {
-        Stage stage = (Stage) scene.getWindow();
-        scene = new Scene(loadFXML(fxml), Color.BLACK);
-        stage.setScene(scene);
+    public static void setScene(String fxml) {
+        try {
+            Stage stage = (Stage) scene.getWindow();
+            scene = new Scene(loadFXML(fxml), Color.BLACK);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            Utils.errorMessage("Failed to load the scene");
+        }
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

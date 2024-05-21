@@ -1,5 +1,6 @@
 package pa.controllers;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -30,6 +31,7 @@ public class ReadController {
 		for (Anime anime : Anime.list) {
 			VBox animeVbox = new VBox();
 			animeVbox.setPadding(new Insets(10));
+			animeVbox.setMinWidth(250);
 			animeVbox.setMaxWidth(250);
 			animeVbox.setMaxHeight(350);
 			animeVbox.setSpacing(10);
@@ -37,7 +39,9 @@ public class ReadController {
 			// 200x300
 			// preserveRatio: true
 			// ambil posternya
-			Image poster = new Image(anime.getPoster().getBinaryStream(), 200, 300, false, true);
+			byte[] posterBytes = anime.getPoster();
+			ByteArrayInputStream posterStream = new ByteArrayInputStream(posterBytes);
+			Image poster = new Image(posterStream, 200, 300, false, true);
 
 			// ImageView itu sama kayak Picture Box di VB.
 			ImageView imageView = new ImageView(poster);
@@ -49,7 +53,7 @@ public class ReadController {
 			// kalau series, tampilkan seasonnya
 			// kalau movie, tampilkan tanggal rilisnya
 			Label releaseLabel = new Label(
-					anime instanceof Series ? ((Series) anime).getFullSeason() : anime.getAiringDate());
+					anime instanceof Series ? ((Series) anime).getSeason() : anime.getAiringDate());
 
 			Label statusLabel = new Label(anime.status);
 

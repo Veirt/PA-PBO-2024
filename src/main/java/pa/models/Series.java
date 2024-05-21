@@ -1,66 +1,31 @@
 package pa.models;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-import pa.DB;
-
-import java.sql.Blob;
 import java.sql.Date;
+import java.util.Map;
 
 public final class Series extends Anime {
-	public String season;
-
 	public Series(int id, String title, String synopsis, int episodes, Date airingDate, String status, String genres,
-			String studio, Blob poster, String season) {
+			String studio, byte[] poster) {
 		super(id, title, synopsis, episodes, airingDate, status, genres, studio, poster);
-		this.season = season;
 	}
 
-	// Contoh: Winter 2024
-	public String getFullSeason() {
-		return season + " " + airingDate.toLocalDate().getYear();
-	}
+	public String getSeason() {
+		// get season from airingDate
+		Map<Integer, String> monthToSeason = Map.ofEntries(
+				Map.entry(1, "Winter"),
+				Map.entry(2, "Winter"),
+				Map.entry(3, "Spring"),
+				Map.entry(4, "Spring"),
+				Map.entry(5, "Spring"),
+				Map.entry(6, "Summer"),
+				Map.entry(7, "Summer"),
+				Map.entry(8, "Summer"),
+				Map.entry(9, "Fall"),
+				Map.entry(10, "Fall"),
+				Map.entry(11, "Fall"),
+				Map.entry(12, "Winter"));
 
-	@Override
-	public void insert() {
-		String query = "INSERT INTO anime (title, synopsis, episodes, status, airingDate, genres, studio, poster, type, season) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		try (PreparedStatement statement = DB.con.prepareStatement(query)) {
-			statement.setString(1, title);
-			statement.setString(2, synopsis);
-			statement.setInt(3, episodes);
-			statement.setString(4, status);
-			statement.setDate(5, airingDate);
-			statement.setString(6, genres);
-			statement.setString(7, studio);
-			statement.setBlob(8, poster);
-			statement.setString(9, "series");
-			statement.setString(10, season);
-			statement.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("Error inserting series: " + e.getMessage());
-		}
+		int month = airingDate.toLocalDate().getMonthValue();
+		return monthToSeason.get(month) + " " + airingDate.toLocalDate().getYear();
 	}
-
-	@Override
-	public void update() {
-		String query = "UPDATE anime SET title = ?, synopsis = ?, episodes = ?, status = ?, airingDate = ?, genres = ?, studio = ?, poster = ?, type = ?, season = ? WHERE id = ?";
-		try (PreparedStatement statement = DB.con.prepareStatement(query)) {
-			statement.setString(1, title);
-			statement.setString(2, synopsis);
-			statement.setInt(3, episodes);
-			statement.setString(4, status);
-			statement.setDate(5, airingDate);
-			statement.setString(6, genres);
-			statement.setString(7, studio);
-			statement.setBlob(8, poster);
-			statement.setString(9, "series");
-			statement.setString(10, season);
-			statement.setInt(11, id);
-			statement.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("Error updating series: " + e.getMessage());
-		}
-	}
-
 }

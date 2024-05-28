@@ -87,7 +87,7 @@ public class InputController {
 			return false;
 		}
 
-		if (!statusComboBox.getValue().equals("Airing") && episodesTextField.getText().equals("0")) {
+		if (!(statusComboBox.getValue().equals("Airing") || statusComboBox.getValue().equals("Upcoming")) && episodesTextField.getText().equals("0")) {
 			Utils.errorMessage("Episodes can't be zero for non-ongoing anime");
 			return false;
 		}
@@ -253,7 +253,7 @@ public class InputController {
 			return;
 		}
 
-		if (status.equals("Airing")) {
+		if (status.equals("Airing" ) || status.equals("Upcoming"))  {
 			unknownCheckBox.setVisible(true);
 		} else {
 			episodesTextField.setDisable(false);

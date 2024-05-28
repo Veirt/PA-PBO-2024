@@ -5,7 +5,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -60,6 +59,8 @@ public class InputController {
 	private Label idLabel;
 	@FXML
 	private Label idLabelValue;
+	@FXML
+	private Button inputAnimeButton;
 
 	@FXML
 	private void setSceneToAnimeList() {
@@ -87,7 +88,8 @@ public class InputController {
 			return false;
 		}
 
-		if (!(statusComboBox.getValue().equals("Airing") || statusComboBox.getValue().equals("Upcoming")) && episodesTextField.getText().equals("0")) {
+		if (!(statusComboBox.getValue().equals("Airing") || statusComboBox.getValue().equals("Upcoming"))
+				&& episodesTextField.getText().equals("0")) {
 			Utils.errorMessage("Episodes can't be zero for non-ongoing anime");
 			return false;
 		}
@@ -253,7 +255,7 @@ public class InputController {
 			return;
 		}
 
-		if (status.equals("Airing" ) || status.equals("Upcoming"))  {
+		if (status.equals("Airing") || status.equals("Upcoming")) {
 			unknownCheckBox.setVisible(true);
 		} else {
 			episodesTextField.setDisable(false);
@@ -263,6 +265,8 @@ public class InputController {
 	}
 
 	public void initialize() {
+		inputAnimeButton.setStyle("-fx-background-color: #3f3f3f;");
+
 		// Episode hanya bisa diisi dengan angka
 		String regex = "[0-9]*";
 		episodesTextField.setTextFormatter(

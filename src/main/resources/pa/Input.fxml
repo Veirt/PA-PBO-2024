@@ -27,7 +27,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </Button>
-            <Button fx:id="createAnimeButton" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Create Anime">
+            <Button fx:id="inputAnimeButton" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Input Anime">
                <font>
                   <Font size="15.0" />
                </font>

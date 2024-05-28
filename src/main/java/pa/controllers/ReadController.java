@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,12 +20,17 @@ public class ReadController {
 	private FlowPane wrapper;
 
 	@FXML
+	private Button animeListButton;
+
+	@FXML
 	private void setSceneToCreateAnime() {
 		InputController.action = "create";
 		App.setScene("Input");
 	}
 
 	public void initialize() throws SQLException {
+		animeListButton.setStyle("-fx-background-color: #3f3f3f;");
+
 		wrapper.setPadding(new Insets(10));
 
 		Anime.read();

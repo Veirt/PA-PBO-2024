@@ -10,7 +10,15 @@ import java.util.ArrayList;
 
 import pa.DB;
 
-public abstract class Anime {
+interface AnimeInterface {
+	public void insert();
+
+	public void update();
+
+	public void delete();
+}
+
+public abstract class Anime implements AnimeInterface {
 	public static ArrayList<Anime> list = new ArrayList<>();
 
 	protected int id;
@@ -135,7 +143,7 @@ public abstract class Anime {
 		}
 	}
 
-	public static Anime getById(int id) {
+	public final static Anime getById(int id) {
 		Anime.read();
 		for (Anime anime : list) {
 			if (anime.getId() == id) {
@@ -146,4 +154,5 @@ public abstract class Anime {
 		return null;
 	}
 
+	abstract public String getReleaseLabel();
 }

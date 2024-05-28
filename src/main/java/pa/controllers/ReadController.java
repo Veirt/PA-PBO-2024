@@ -58,8 +58,7 @@ public class ReadController {
 
 			// kalau series, tampilkan seasonnya
 			// kalau movie, tampilkan tanggal rilisnya
-			Label releaseLabel = new Label(
-					anime instanceof Series ? ((Series) anime).getSeason() : anime.getAiringDate());
+			Label releaseLabel = new Label(anime.getReleaseLabel());
 
 			Label statusLabel = new Label(anime.status);
 

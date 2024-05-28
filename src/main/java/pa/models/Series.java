@@ -29,4 +29,9 @@ public final class Series extends Anime {
 		int month = airingDate.toLocalDate().getMonthValue();
 		return monthToSeason.get(month) + " " + airingDate.toLocalDate().getYear();
 	}
+
+	@Override
+	public String getReleaseLabel() {
+		return this.getSeason();
+	}
 }

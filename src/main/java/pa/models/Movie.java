@@ -9,4 +9,8 @@ public final class Movie extends Anime {
 		this.type = "movie";
 	}
 
+	@Override
+	public String getReleaseLabel() {
+		return this.getAiringDate();
+	}
 }

@@ -104,7 +104,13 @@ public class AnimeInfoController {
 		}
 
 		typeLabel.setText(currentAnime instanceof Series ? "Series" : "Movie");
-		episodesLabel.setText(Integer.toString(currentAnime.episodes));
+
+		if (currentAnime.episodes == 0) {
+			episodesLabel.setText("Unknown");
+		} else {
+			episodesLabel.setText(Integer.toString(currentAnime.episodes));
+		}
+
 		statusLabel.setText(currentAnime.status);
 		studioLabel.setText(currentAnime.studio);
 		airingDateLabel.setText(currentAnime.getAiringDate());

@@ -29,10 +29,36 @@ public class AuthController {
 		}
 	}
 
+	public boolean validate() {
+		String username = usernameTextField.getText();
+		String password = passwordField.getText();
+
+		if (username.isEmpty() || password.isEmpty()) {
+			Utils.errorMessage("Username/password cannot be empty.");
+			return false;
+		}
+
+		if (username.length() > 100) {
+			Utils.errorMessage("Username is too long.");
+			return false;
+		}
+
+		if (new User(username, password).isUsernameExists()) {
+			Utils.errorMessage("Username already exists.");
+			return false;
+		}
+
+		return true;
+	}
+
 	@FXML
 	private void register() {
 		String username = usernameTextField.getText();
 		String password = passwordField.getText();
+
+		if (!validate()) {
+			return;
+		}
 
 		User user = new User(username, password);
 		user.register();

@@ -55,4 +55,16 @@ public final class User {
 			return false;
 		}
 	}
+
+	public boolean isUsernameExists() {
+		String query = "SELECT * FROM users WHERE username = ?";
+		try (PreparedStatement statement = DB.con.prepareStatement(query)) {
+			statement.setString(1, username);
+			ResultSet result = statement.executeQuery();
+			return result.next();
+		} catch (Exception e) {
+			System.out.println("Error reading user: " + e.getMessage());
+			return false;
+		}
+	}
 }

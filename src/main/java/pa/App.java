@@ -15,7 +15,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Application.setUserAgentStylesheet(new CupertinoDark().getUserAgentStylesheet());
-        scene = new Scene(loadFXML("Read"));
+        scene = new Scene(loadFXML("Auth"));
         primaryStage.setTitle("Anime99");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -30,6 +30,7 @@ public class App extends Application {
             stage.setScene(scene);
         } catch (IOException e) {
             Utils.errorMessage("Failed to load the scene");
+            e.printStackTrace();
         }
     }
 

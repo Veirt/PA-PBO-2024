@@ -63,8 +63,14 @@ public class InputController {
 	private Button inputAnimeButton;
 
 	@FXML
-	private void setSceneToAnimeList() {
+	private void setSceneToRead() {
 		App.setScene("Read");
+	}
+
+	@FXML
+	private void setSceneToCreate() {
+		InputController.action = "create";
+		App.setScene("Input");
 	}
 
 	@FXML

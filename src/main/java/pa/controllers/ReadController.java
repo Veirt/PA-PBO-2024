@@ -13,6 +13,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import pa.App;
+import pa.Session;
 import pa.models.*;
 
 public class ReadController {
@@ -21,6 +22,9 @@ public class ReadController {
 
 	@FXML
 	private Button animeListButton;
+
+	@FXML
+	private Button inputAnimeButton;
 
 	@FXML
 	private void setSceneToRead() {
@@ -33,7 +37,25 @@ public class ReadController {
 		App.setScene("Input");
 	}
 
+	@FXML
+	private void logout() {
+		Session.currentUser = null;
+		App.setScene("Auth");
+	}
+
+	@FXML
+	private void exit() {
+		System.exit(0);
+	}
+
+	public void hideComponents() {
+		if (Session.currentUser.role.equals("user")) {
+			inputAnimeButton.setVisible(false);
+		}
+	}
+
 	public void initialize() throws SQLException {
+		hideComponents();
 		animeListButton.setStyle("-fx-background-color: #3f3f3f;");
 
 		wrapper.setPadding(new Insets(10));

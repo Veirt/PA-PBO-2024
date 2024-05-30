@@ -25,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import pa.App;
+import pa.Session;
 import pa.Utils;
 import pa.models.*;
 
@@ -71,6 +72,17 @@ public class InputController {
 	private void setSceneToCreate() {
 		InputController.action = "create";
 		App.setScene("Input");
+	}
+
+	@FXML
+	private void logout() {
+		Session.currentUser = null;
+		App.setScene("Auth");
+	}
+
+	@FXML
+	private void exit() {
+		System.exit(0);
 	}
 
 	@FXML
@@ -164,6 +176,7 @@ public class InputController {
 		App.setScene("Read");
 	}
 
+	@FXML
 	private void updateAnime() {
 		String title = titleTextField.getText();
 		if (!validateAnime()) {

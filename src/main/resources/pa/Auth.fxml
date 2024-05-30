@@ -3,26 +3,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pa.controllers.AuthController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="140.0" fitWidth="139.0" pickOnBounds="true" smooth="false">
-               <image>
-                  <Image url="@logo-big.png" />
-               </image>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </ImageView>
             <Label text="Anime99">
                <font>
                   <Font name="System Bold" size="42.0" />
@@ -39,34 +29,44 @@
       <Label />
       <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0">
          <children>
+            <Label prefHeight="18.0" prefWidth="372.0" text="Username">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
             <TextField fx:id="usernameTextField" prefHeight="40.0" prefWidth="372.0" promptText="Enter your username...">
                <font>
                   <Font size="19.0" />
                </font>
             </TextField>
-            <TextField fx:id="passwordTextField" prefHeight="40.0" prefWidth="366.0" promptText="Enter your password...">
-               <font>
-                  <Font size="19.0" />
-               </font>
+            <Label prefWidth="372.0" text="Password">
                <VBox.margin>
                   <Insets top="50.0" />
                </VBox.margin>
-            </TextField>
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordField" prefWidth="372.0" promptText="Enter your password...">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </PasswordField>
          </children>
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="120.0" text="Login">
+            <Button mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="94.0" text="Login">
                <font>
-                  <Font size="23.0" />
+                  <Font size="18.0" />
                </font>
                <HBox.margin>
                   <Insets right="25.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Register">
+            <Button mnemonicParsing="false" onAction="#register" text="Register">
                <font>
-                  <Font size="23.0" />
+                  <Font size="18.0" />
                </font>
                <HBox.margin>
                   <Insets left="25.0" />

@@ -3,12 +3,14 @@ package pa.controllers;
 import java.io.ByteArrayInputStream;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import pa.App;
+import pa.Session;
 import pa.Utils;
 import pa.models.*;
 
@@ -37,6 +39,13 @@ public class AnimeInfoController {
 	ImageView posterImageView;
 
 	@FXML
+	Button updateButton;
+	@FXML
+	Button deleteButton;
+	@FXML
+	Button inputAnimeButton;
+
+	@FXML
 	private void setSceneToRead() {
 		App.setScene("Read");
 	}
@@ -45,6 +54,17 @@ public class AnimeInfoController {
 	private void setSceneToCreate() {
 		InputController.action = "create";
 		App.setScene("Input");
+	}
+
+	@FXML
+	private void logout() {
+		Session.currentUser = null;
+		App.setScene("Auth");
+	}
+
+	@FXML
+	private void exit() {
+		System.exit(0);
 	}
 
 	@FXML
@@ -76,7 +96,18 @@ public class AnimeInfoController {
 		App.setScene("Read");
 	}
 
+	public void hideComponents() {
+		if (Session.currentUser.role.equals("user")) {
+			// hide update and delete buttons
+			updateButton.setVisible(false);
+			deleteButton.setVisible(false);
+
+			inputAnimeButton.setVisible(false);
+		}
+	}
+
 	public void initialize() {
+		hideComponents();
 		// loop over Anime.list and find currentAnimeId
 		Anime currentAnime = null;
 

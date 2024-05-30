@@ -8,7 +8,7 @@ import pa.DB;
 
 public final class User {
 	public String username;
-	public String password;
+	private String password;
 	public String role;
 
 	public User(String username, String password) {

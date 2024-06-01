@@ -16,6 +16,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         Application.setUserAgentStylesheet(new CupertinoDark().getUserAgentStylesheet());
         scene = new Scene(loadFXML("Auth"));
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Anime99");
         primaryStage.setScene(scene);
         primaryStage.show();
